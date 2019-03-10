@@ -53,13 +53,6 @@ int main(int argc, char* argv[])
   
   create_matrices(a, b, c, len);
   multiply(a, b, c, size);
-
-  printf("A:\n");
-  print(a, size);
-  printf("B:\n");
-  print(b, size);
-  printf("C:\n");
-  print(c, size);
   free(a); free(b); free(c);
   return 0;
 }
