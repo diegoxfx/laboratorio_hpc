@@ -13,15 +13,12 @@ double integrate(float a, float b, long interval_length) {
   double sum = 0;
 #pragma omp parallel
   {
-    double local_sum = 0;
     double x;
-#pragma omp for
+#pragma omp for reduction(+: sum)
     for(long i = 0; i < interval_length; i++) {
       x = a + i*dx;
-      local_sum += dx*f(x);
+      sum += dx*f(x);
     }
-    #pragma omp critical
-    sum += local_sum;
   }
   return sum;
 }
